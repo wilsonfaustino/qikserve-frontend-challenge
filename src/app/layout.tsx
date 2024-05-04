@@ -1,10 +1,10 @@
 import '~/styles/globals.css'
 
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import type { ReactNode } from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({ subsets: ['latin'], weight: ['100', '300', '400'] })
 
 export const metadata: Metadata = {
   viewport: 'width=device-width,initial-scale=1',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={roboto.className}>{children}</body>
     </html>
   )
 }
