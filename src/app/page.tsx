@@ -1,17 +1,24 @@
 import type { Metadata } from 'next'
 
+import { Header } from '~/components/header'
 import { Main } from '~/components/main'
+import { env } from '~/env'
+import { getSettings } from '~/utils/settings'
 
-const data = {
-  title: 'Next.js Boilerplate',
-  description: 'Next.js, TypeScript, Tailwind, Storybook, Vitest, Cypress and Testing-Library',
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await fetch(`${env.SETTINGS_URL}`).then((res) => res.json())
+
+  return {
+    title: data.name,
+  }
 }
 
-export const metadata: Metadata = {
-  title: data.title,
-  description: data.description,
-}
-
-export default function Home() {
-  return <Main title={data.title} description={data.description} />
+export default async function Home() {
+  const data = await getSettings()
+  return (
+    <>
+      <Header settings={data.webSettings} />
+      <Main title={data.name} description={data.description || ''} />
+    </>
+  )
 }
