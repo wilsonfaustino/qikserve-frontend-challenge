@@ -18,8 +18,13 @@ module.exports = async (plop) => {
     actions: [
       {
         type: 'add',
-        path: 'src/components/{{kebabCase name}}/index.tsx',
-        templateFile: '.plop/templates/index.tsx.hbs',
+        path: 'src/components/{{kebabCase name}}/{{kebabCase name}}.tsx',
+        templateFile: '.plop/templates/component.tsx.hbs',
+      },
+      {
+        type: 'add',
+        path: 'src/components/{{kebabCase name}}/index.ts',
+        templateFile: '.plop/templates/index.ts.hbs',
       },
       {
         type: 'add',
