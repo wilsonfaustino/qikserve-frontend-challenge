@@ -1,9 +1,15 @@
+'use client'
+
 import Image from 'next/image'
+import { useSetRecoilState } from 'recoil'
 
 import searchIcon from '~/assets/search-icon.svg'
+import { searchTermState } from '~/context/search-atom'
 import { cn } from '~/utils/classnames'
 
 export function SearchBar() {
+  const setSearchTerm = useSetRecoilState(searchTermState)
+
   return (
     <div className="bg-app-500 flex h-14 w-full items-center justify-center py-1.5">
       <div
@@ -22,6 +28,7 @@ export function SearchBar() {
             'placeholder:text-app-700 focus:border-transparent focus:outline-0 focus:ring-0',
           )}
           placeholder="Search menu items"
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
     </div>
