@@ -7,6 +7,7 @@ const config: Config = {
     extend: {
       colors: {
         app: {
+          400: '#F8F9FA',
           500: '#EEEEEE',
         },
       },
