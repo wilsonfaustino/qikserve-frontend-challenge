@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 
-import { Header } from '~/components/header'
 import { Main } from '~/components/main'
 import { env } from '~/env'
-import { getSettings } from '~/utils/settings'
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await fetch(`${env.SETTINGS_URL}`).then((res) => res.json())
@@ -13,12 +11,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function Home() {
-  const data = await getSettings()
+export default function Home() {
   return (
     <>
-      <Header settings={data.webSettings} />
-      <Main title={data.name} description={data.description || ''} />
+      <Main title={'teste'} description={'teste'} />
     </>
   )
 }
