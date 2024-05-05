@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import { getContent } from '~/api/content'
 import { Main } from '~/components/main'
 import { env } from '~/env'
 
@@ -11,10 +12,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function Home() {
+export default async function Home() {
+  const content = await getContent()
+
   return (
     <>
-      <Main title={'teste'} description={'teste'} />
+      <Main content={content} />
     </>
   )
 }
