@@ -5,6 +5,7 @@ import { Roboto } from 'next/font/google'
 import type { ReactNode } from 'react'
 
 import { Header } from '~/components/header'
+import RecoilContextProvider from '~/context/recoil-provider'
 import { cn } from '~/utils/classnames'
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['100', '300', '400'] })
@@ -17,8 +18,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={cn('bg-app-500 antialiased', roboto.className)}>
-        <Header />
-        {children}
+        <RecoilContextProvider>
+          <Header />
+          {children}
+        </RecoilContextProvider>
       </body>
     </html>
   )
