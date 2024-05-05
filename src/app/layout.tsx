@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn('bg-app-500', roboto.className)}>
+      <body className={cn('bg-app-500 antialiased', roboto.className)}>
         <Header />
         {children}
       </body>
