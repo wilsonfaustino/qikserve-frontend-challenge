@@ -5,6 +5,11 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        app: {
+          500: '#EEEEEE',
+        },
+      },
       minWidth: ({ theme }) => ({
         ...theme('width'),
       }),
