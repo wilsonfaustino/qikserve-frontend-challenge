@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import type { ReactNode } from 'react'
 
+import { Header } from '~/components/header'
+import { cn } from '~/utils/classnames'
+
 const roboto = Roboto({ subsets: ['latin'], weight: ['100', '300', '400'] })
 
 export const metadata: Metadata = {
@@ -13,7 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={cn('bg-app-500', roboto.className)}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
