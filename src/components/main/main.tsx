@@ -1,14 +1,24 @@
+import type { Content } from '~/@types'
+
 export type Props = {
-  title: string
-  description: string
+  content: Content
 }
 
-export const Main = ({ title, description }: Props) => {
+export const Main = ({ content }: Props) => {
   return (
-    <main className="flex flex-col items-center justify-center gap-16 p-16 text-center">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-4xl font-bold">{title}</h1>
-        <h2 className="text-xl">{description || 'We should have an description'}</h2>
+    <main className="mx-auto flex w-full max-w-5xl flex-col items-center justify-center bg-red-500 text-center">
+      <div className="h-14 w-full bg-white"></div>
+      <div className="bg-app-400 flex w-full gap-6 px-10 py-8">
+        <div className="h-96 w-[600px] bg-yellow-400">
+          <ul>
+            {content.sections.map((section) => (
+              <li key={section.id}>
+                <h2>{section.name}</h2>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="h-full min-h-[129px] w-[320px] bg-yellow-400"></div>
       </div>
     </main>
   )
