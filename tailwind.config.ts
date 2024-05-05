@@ -9,6 +9,8 @@ const config: Config = {
         app: {
           400: '#F8F9FA',
           500: '#EEEEEE',
+          800: '#464646',
+          900: '#121212',
         },
       },
       minWidth: ({ theme }) => ({
