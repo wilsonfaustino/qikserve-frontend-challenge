@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import type { Settings } from '~/@types'
-import { getSettings } from '~/utils/settings'
+import { getSettings } from '~/api/settings'
 
 import { DesktopNav } from './desktop-nav'
 
@@ -16,7 +16,7 @@ export async function Header() {
 
   return (
     <div
-      className="bg-red mx-auto flex h-[150px] w-full max-w-[1440px] flex-col items-center"
+      className="bg-red mx-auto flex w-full max-w-[1440px] flex-col items-center bg-white pb-[5px]"
       style={{ backgroundColor: settings.backgroundColour }}
     >
       <DesktopNav backgroundColor={settings.navBackgroundColour} />
