@@ -1,5 +1,7 @@
 import type { Content } from '~/@types'
 
+import { Cart } from '../cart'
+
 export type Props = {
   content: Content
 }
@@ -18,7 +20,7 @@ export const Main = ({ content }: Props) => {
             ))}
           </ul>
         </div>
-        <div className="h-full min-h-[129px] w-[320px] bg-yellow-400"></div>
+        <Cart />
       </div>
     </main>
   )
