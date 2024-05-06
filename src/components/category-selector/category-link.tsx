@@ -33,19 +33,20 @@ export function CategoryLink({
       href={href}
       {...props}
     >
-      <Image
-        src={imgUrl}
-        alt={children as string}
-        width={74}
-        height={74}
-        className={cn('aspect-square h-[74px] rounded-full')}
-        style={{ outline: isActive ? `2px solid ${settings?.primaryColour || 'black'}` : 'none', outlineOffset: '2px' }}
-      />
+      <div
+        className="aspect-square h-[74px] overflow-hidden rounded-full"
+        style={{
+          outline: isActive ? `2px solid ${settings?.primaryColour || 'black'}` : 'none',
+          outlineOffset: '2px',
+        }}
+      >
+        <Image src={imgUrl} alt={children as string} width={200} height={200} className="h-[74px] object-cover" />
+      </div>
       <div className="flex h-16 w-full items-center justify-center">
         <span
           className={cn(
             'select-none whitespace-nowrap tracking-wide transition',
-            'lg:group-hover:text-app-600 text-xl lg:text-lg',
+            'text-xl lg:text-lg lg:group-hover:text-app-600',
           )}
         >
           {children}
