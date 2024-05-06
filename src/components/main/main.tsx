@@ -6,7 +6,7 @@ export type Props = {
 
 export const Main = ({ children }: Props) => {
   return (
-    <main className="bg-app-400 mx-auto flex w-full max-w-5xl flex-col items-center justify-center text-center">
+    <main className="mx-auto flex w-full max-w-5xl flex-col items-center justify-center bg-app-400 text-center">
       {children}
     </main>
   )
