@@ -2,15 +2,20 @@
 
 import { MinusIcon, PlusIcon } from '@radix-ui/react-icons'
 
+import { cn } from '~/utils/classnames'
+
 type Props = {
   baseColor?: string
+  size?: 'sm' | 'lg'
   value: number
   onChange: (value: number) => void
   min?: number
   max?: number
 }
 
-export function CountPicker({ baseColor = 'red', value, onChange, min = 1, max = 20 }: Props) {
+export function CountPicker({ baseColor = 'red', value, onChange, size = 'lg', min = 1, max = 20 }: Props) {
+  const buttonBaseClasses =
+    'flex items-center justify-center rounded-full text-white disabled:cursor-not-allowed disabled:text-zinc-700'
   const handleIncrement = () => {
     if (value < max) {
       onChange(value + 1)
@@ -26,25 +31,25 @@ export function CountPicker({ baseColor = 'red', value, onChange, min = 1, max =
   const isIncreaseDisabled = value === max
 
   return (
-    <div className="flex h-8 w-[143px] items-center justify-between">
+    <div className={cn('flex items-center justify-between', size === 'lg' ? 'h-8 w-[143px]' : 'h-9 w-[94px] p-2')}>
       <button
         disabled={isDecreaseDisabled}
         onClick={handleDecrement}
         aria-label="Decrement value"
-        className="flex h-8 w-8 items-center justify-center rounded-full text-white disabled:cursor-not-allowed disabled:text-zinc-700"
+        className={cn(buttonBaseClasses, size === 'lg' ? 'h-8 w-8' : 'h-5 w-5')}
         style={{ backgroundColor: isDecreaseDisabled ? '#DADADA' : baseColor }}
       >
-        <MinusIcon className="h-[18px] w-[18px]" />
+        <MinusIcon className={cn(size === 'lg' ? 'h-[18px] w-[18px]' : 'h-[12px] w-[12px]')} />
       </button>
       <span className="font-bold">{value}</span>
       <button
         disabled={isIncreaseDisabled}
         onClick={handleIncrement}
         aria-label="Increment value"
-        className="flex h-8 w-8 items-center justify-center rounded-full text-white disabled:cursor-not-allowed disabled:text-zinc-700"
+        className={cn(buttonBaseClasses, size === 'lg' ? 'h-8 w-8' : 'h-5 w-5')}
         style={{ backgroundColor: isIncreaseDisabled ? '#DADADA' : baseColor }}
       >
-        <PlusIcon className="h-[18px] w-[18px]" />
+        <PlusIcon className={cn(size === 'lg' ? 'h-[18px] w-[18px]' : 'h-[12px] w-[12px]')} />
       </button>
     </div>
   )
