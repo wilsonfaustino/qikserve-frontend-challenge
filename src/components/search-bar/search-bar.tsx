@@ -11,15 +11,15 @@ export function SearchBar() {
   const setSearchTerm = useSetRecoilState(searchTermState)
 
   return (
-    <div className="bg-app-500 flex h-14 w-full items-center justify-center py-1.5">
+    <div className="flex h-14 w-full items-center justify-center bg-app-500 py-1.5">
       <div
         className={cn(
-          'ring-app-600 flex h-11 w-full items-center justify-center rounded-lg bg-white ring-1 ring-inset transition',
+          'flex h-11 w-full items-center justify-center rounded-lg bg-white ring-1 ring-inset ring-app-600 transition',
           'focus-within:ring-2 focus-within:ring-inset',
         )}
       >
         <div className="flex h-11 w-12 items-center justify-center">
-          <Image src={searchIcon} alt="Search icon" width={24} height={24} />
+          <Image src={searchIcon} alt="Search icon" width={24} />
         </div>
         <input
           type="text"
