@@ -29,6 +29,10 @@ const config: Config = {
       }),
     },
   },
-  plugins: [],
+  plugins: [
+    // ...
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }), // default: 'standard'
+  ],
 }
 export default config
