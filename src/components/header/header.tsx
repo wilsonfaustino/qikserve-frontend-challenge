@@ -26,6 +26,7 @@ export async function Header() {
           height="141"
           src={url}
           alt="header image"
+          priority
           className="h-[150px] w-full max-w-[1440px] object-cover"
         />
       </div>
