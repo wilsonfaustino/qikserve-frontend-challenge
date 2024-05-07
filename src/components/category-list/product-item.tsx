@@ -46,7 +46,7 @@ export function ProductItem({ product }: Props) {
           </button>
         </Modal.Button>
         <Modal.Content>
-          <div className="h-full overflow-auto scrollbar-none">
+          <div className="h-full overflow-auto" style={{ scrollbarWidth: 'none' }}>
             {product.images && product.images.length > 0 && (
               <Image src={product.images[0].image} alt={product.name} width={500} height={320} className="" />
             )}
