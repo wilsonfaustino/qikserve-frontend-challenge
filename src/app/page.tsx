@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { getContent } from '~/api/content'
+import { AllergyInformation } from '~/components/allergy-information'
 import { Cart } from '~/components/cart'
 import { Main } from '~/components/main'
 import { ProductList } from '~/components/product-list'
@@ -21,9 +22,12 @@ export default async function Home() {
   return (
     <Main>
       <SearchBar />
-      <div className=":py-8 flex w-full flex-col gap-6 md:flex-row md:px-10">
+      <div className=":py-8 flex w-full flex-col md:flex-row md:gap-6 md:px-10">
         <ProductList products={content} />
-        <Cart />
+        <div className="flex flex-col-reverse md:flex-col">
+          <Cart />
+          <AllergyInformation />
+        </div>
       </div>
     </Main>
   )
