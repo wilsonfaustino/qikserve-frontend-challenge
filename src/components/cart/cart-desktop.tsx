@@ -8,7 +8,7 @@ export function CartDesktop() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="h-full min-h-[129px] w-80 bg-app-400 shadow-lg">
+      <div className="min-h-[129px] w-80 bg-app-400 shadow-lg">
         <div className="flex h-16 items-center px-6">
           <h2 className="text-2xl font-medium text-app-800">Carrinho</h2>
         </div>
@@ -20,7 +20,7 @@ export function CartDesktop() {
   }
 
   return (
-    <div className="h-full min-h-[129px] w-[320px] overflow-hidden bg-app-400 shadow-lg">
+    <div className="min-h-[129px] w-[320px] overflow-hidden bg-app-400 shadow-lg">
       <div className="flex h-16 items-center px-6">
         <h2 className="text-2xl font-medium text-app-800">Carrinho</h2>
       </div>
