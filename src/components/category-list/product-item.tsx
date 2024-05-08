@@ -34,7 +34,7 @@ export function ProductItem({ product }: Props) {
         <button type="button" className="flex w-full p-4">
           <div className="flex-1 text-left">
             <h3 className="text-xl">{product.name}</h3>
-            <p className="line-clamp-1 text-base font-light">{product.description}</p>
+            <p className="line-clamp-2 text-base font-light lg:line-clamp-1">{product.description}</p>
             <p className="text-lg font-medium">{formattedPrice}</p>
           </div>
           {product.images && product.images.length > 0 && (
