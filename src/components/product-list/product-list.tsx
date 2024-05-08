@@ -11,7 +11,7 @@ export type Props = {
 
 export function ProductList({ products }: Props) {
   return (
-    <div className="w-[600px] bg-white shadow-lg">
+    <div className="w-full bg-white shadow-lg md:w-[600px]">
       <CategorySelector categories={products.sections} />
       <ul>
         {products.sections.map((section) => (
