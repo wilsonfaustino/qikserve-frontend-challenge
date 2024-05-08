@@ -46,7 +46,7 @@ export function DisplayNav({ settings }: Props) {
   ]
 
   return (
-    <section className="mx-auto w-full max-w-7xl">
+    <section className="mx-auto w-full">
       {isDesktop ? <DesktopNav links={links} backgroundColor={settings.primaryColour} /> : null}
       {isMobile ? <MobileNav backgroundColor={settings.primaryColour} links={links} /> : null}
     </section>

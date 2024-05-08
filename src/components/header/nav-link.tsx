@@ -24,7 +24,7 @@ export function NavLink({ children, href, className, isMobile, ...props }: Props
     <Link
       className={cn(
         'group relative top-0 flex items-center focus:outline-none',
-        'h-10 w-full justify-end lg:h-[52px] lg:w-[232px] lg:justify-center',
+        'h-10 w-full justify-end sm:h-[52px] sm:w-[232px] sm:justify-center',
         className,
       )}
       data-active={isActive}
