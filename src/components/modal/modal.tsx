@@ -1,10 +1,11 @@
 'use client'
 
 import * as Dialog from '@radix-ui/react-dialog'
-import { Cross1Icon } from '@radix-ui/react-icons'
 import type { ReactNode } from 'react'
 
 import { cn } from '~/utils/classnames'
+
+import { CloseIcon } from '../icons/close-icon'
 
 type RootProps = {
   open?: boolean
@@ -20,9 +21,9 @@ function Root({ open, onOpenChange, children }: RootProps) {
   )
 }
 
-type ModalContentProps = { children: ReactNode }
+type ModalContentProps = { children: ReactNode; accentColor?: string }
 
-function ModalContent({ children }: ModalContentProps) {
+function ModalContent({ children, accentColor = 'black' }: ModalContentProps) {
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 bg-black/60 data-[state=closed]:animate-[dialog-overlay-hide_200ms] data-[state=open]:animate-[dialog-overlay-show_200ms]" />
@@ -34,7 +35,7 @@ function ModalContent({ children }: ModalContentProps) {
       >
         {children}
         <Dialog.Close className="absolute right-[18px] top-[18px] z-50 flex h-7 w-7 items-center justify-center rounded-full bg-white text-gray-400 hover:text-gray-500">
-          <Cross1Icon className="h-3 w-3" />
+          <CloseIcon className="h-3 w-3" accentColor={accentColor} />
         </Dialog.Close>
       </Dialog.Content>
     </Dialog.Portal>
