@@ -48,16 +48,25 @@ export function ProductItem({ product }: Props) {
           )}
         </button>
       </Modal.Button>
-      <Modal.Content>
+      <Modal.Content accentColor={styleSettings?.primaryColour}>
         <div className="h-full overflow-auto pb-32" style={{ scrollbarWidth: 'none' }}>
-          {product.images && product.images.length > 0 && (
-            <Image src={product.images[0].image} alt={product.name} width={500} height={320} className="" />
+          {product.images && product.images.length > 0 ? (
+            <div className="h-80 w-full">
+              <Image
+                src={product.images[0].image}
+                alt={product.name}
+                width={800}
+                height={320}
+                className="h-auto max-h-80 object-cover"
+              />
+            </div>
+          ) : (
+            <div className="h-20 w-full" />
           )}
           <div className="flex w-full flex-col gap-3 p-4">
             <h3 className="text-xl font-bold">{product.name}</h3>
             <p className="text-app-800">{product.description}</p>
           </div>
-          {/* ADD MODIFIER PICKER */}
           {product.modifiers && product.modifiers.length > 0
             ? product.modifiers.map((mod) => (
                 <ModifierPicker
