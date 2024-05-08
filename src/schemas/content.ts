@@ -58,3 +58,18 @@ export const contentSchema = z.object({
   collapse: z.number(),
   sections: z.array(sectionSchema),
 })
+
+export const cartProductModifierSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  price: z.number(),
+  parentId: z.number(),
+})
+
+export const cartProductSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  price: z.number(),
+  quantity: z.number(),
+  modifiers: z.array(cartProductModifierSchema).optional(),
+})
