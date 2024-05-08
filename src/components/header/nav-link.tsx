@@ -12,9 +12,10 @@ import { cn } from '~/utils/classnames'
 interface NavLinkProps extends LinkProps {
   href: string
   className?: string
+  isMobile?: boolean
 }
 
-export function NavLink({ children, href, className, ...props }: PropsWithChildren<NavLinkProps>) {
+export function NavLink({ children, href, className, isMobile, ...props }: PropsWithChildren<NavLinkProps>) {
   const pathname = usePathname()
 
   const isActive = useMemo(() => pathname === href, [pathname, href])
@@ -40,7 +41,10 @@ export function NavLink({ children, href, className, ...props }: PropsWithChildr
       </span>
       {isActive ? (
         <motion.div
-          className={cn('absolute inset-x-0 bottom-0 h-[5px] w-full group-data-[active=true]:bg-white')}
+          className={cn(
+            'absolute inset-x-0 bottom-0 h-[5px] w-full',
+            isMobile ? 'group-data-[active=true]:bg-zinc-500' : 'group-data-[active=true]:bg-white',
+          )}
           layoutId="line"
         />
       ) : null}
