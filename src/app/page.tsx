@@ -21,7 +21,7 @@ export default async function Home() {
   return (
     <Main>
       <SearchBar />
-      <div className="flex w-full gap-6 px-10 py-8">
+      <div className=":py-8 flex w-full flex-col gap-6 md:flex-row md:px-10">
         <ProductList products={content} />
         <Cart />
       </div>
