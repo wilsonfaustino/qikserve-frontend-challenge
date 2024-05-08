@@ -11,7 +11,7 @@ export function SearchBar() {
   const setSearchTerm = useSetRecoilState(searchTermState)
 
   return (
-    <div className="flex h-14 w-full items-center justify-center bg-app-500 py-1.5">
+    <div className="flex h-14 w-full items-center justify-center bg-app-500 p-4 lg:px-0 lg:py-1.5">
       <div
         className={cn(
           'flex h-11 w-full items-center justify-center rounded-lg bg-white ring-1 ring-inset ring-app-600 transition',
