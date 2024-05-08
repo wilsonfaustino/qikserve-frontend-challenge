@@ -1,8 +1,9 @@
 'use client'
 
-import { MinusIcon, PlusIcon } from '@radix-ui/react-icons'
-
 import { cn } from '~/utils/classnames'
+
+import { MinusIcon } from '../icons/minus-icon'
+import { PlusIcon } from '../icons/plus-icon'
 
 type Props = {
   baseColor?: string
@@ -39,7 +40,10 @@ export function CountPicker({ baseColor = 'red', value, onChange, size = 'lg', m
         className={cn(buttonBaseClasses, size === 'lg' ? 'h-8 w-8' : 'h-5 w-5')}
         style={{ backgroundColor: isDecreaseDisabled ? '#DADADA' : baseColor }}
       >
-        <MinusIcon className={cn(size === 'lg' ? 'h-[18px] w-[18px]' : 'h-[12px] w-[12px]')} />
+        <MinusIcon
+          className={cn(size === 'lg' ? 'w-[18px]' : 'w-3')}
+          accentColor={isDecreaseDisabled ? '#5F5F5F' : 'white'}
+        />
       </button>
       <span className="font-bold">{value}</span>
       <button
@@ -49,7 +53,10 @@ export function CountPicker({ baseColor = 'red', value, onChange, size = 'lg', m
         className={cn(buttonBaseClasses, size === 'lg' ? 'h-8 w-8' : 'h-5 w-5')}
         style={{ backgroundColor: isIncreaseDisabled ? '#DADADA' : baseColor }}
       >
-        <PlusIcon className={cn(size === 'lg' ? 'h-[18px] w-[18px]' : 'h-[12px] w-[12px]')} />
+        <PlusIcon
+          className={cn(size === 'lg' ? 'h-[18px] w-[18px]' : 'h-3 w-3')}
+          accentColor={isIncreaseDisabled ? '#5F5F5F' : 'white'}
+        />
       </button>
     </div>
   )
