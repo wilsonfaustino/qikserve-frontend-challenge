@@ -1,12 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import { useRecoilValue } from 'recoil'
 
 import type { Category } from '~/@types'
-import arrowUp from '~/assets/arrow-up.svg'
 import { searchTermState } from '~/context/search-atom'
+import { settingsState } from '~/context/settings-atom'
 
+import { ArrowUpIcon } from '../icons/arrowup-icon'
 import { ProductItem } from './product-item'
 
 export type Props = {
@@ -15,6 +15,8 @@ export type Props = {
 
 export function CategoryList({ category }: Props) {
   const searchTerm = useRecoilValue(searchTermState)
+  const styleSettings = useRecoilValue(settingsState)
+
   const filteredItems = searchTerm
     ? category.items.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : category.items
@@ -27,7 +29,7 @@ export function CategoryList({ category }: Props) {
             {category.name}
           </h2>
           <a href="#top">
-            <Image src={arrowUp} alt="arrow up" width={24} height={24} />
+            <ArrowUpIcon className="h-6 w-6" accentColor={styleSettings?.primaryColour} />
           </a>
         </div>
       )}
