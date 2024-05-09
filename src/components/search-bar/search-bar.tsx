@@ -1,11 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import { useSetRecoilState } from 'recoil'
 
-import searchIcon from '~/assets/search-icon.svg'
 import { searchTermState } from '~/context/search-atom'
 import { cn } from '~/utils/classnames'
+
+import { SearchIcon } from '../icons/search-icon'
 
 export function SearchBar() {
   const setSearchTerm = useSetRecoilState(searchTermState)
@@ -19,7 +19,7 @@ export function SearchBar() {
         )}
       >
         <div className="flex h-11 w-12 items-center justify-center">
-          <Image src={searchIcon} alt="Search icon" width={24} />
+          <SearchIcon className="h-6 w-6" />
         </div>
         <input
           type="text"
