@@ -1,3 +1,9 @@
+import { Main } from '~/components/main'
+
 export default function ContactPage() {
-  return <div>Contato</div>
+  return (
+    <Main>
+      <h1>Contato</h1>
+    </Main>
+  )
 }

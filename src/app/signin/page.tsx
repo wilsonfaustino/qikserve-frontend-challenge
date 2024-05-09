@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import { Main } from '~/components/main'
 import { env } from '~/env'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -11,5 +12,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Signin() {
-  return <h1>Sign In</h1>
+  return (
+    <Main>
+      <h1>Sign In</h1>
+    </Main>
+  )
 }
