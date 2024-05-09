@@ -1,3 +1,5 @@
+import { RecoilRoot } from 'recoil'
+
 import type { Products } from '~/@types'
 import { render, screen } from '~/utils/tests'
 
@@ -204,7 +206,11 @@ const mockCategories: Products['sections'] = [
 
 describe('<CategorySelector />', () => {
   it('renders', () => {
-    render(<CategorySelector categories={mockCategories} />)
+    render(
+      <RecoilRoot>
+        <CategorySelector categories={mockCategories} />
+      </RecoilRoot>,
+    )
 
     expect(screen.getAllByRole('link')).toHaveLength(3)
   })
