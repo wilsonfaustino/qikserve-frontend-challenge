@@ -9,8 +9,14 @@
       "total": "Total",
       "your-basket": "Seu carrinho"
     },
+    "links":{
+      "home": "Cardápio",
+      "signin": "Entrar",
+      "contact": "Contato"
+    },
     "search": {
       "placeholder": "Buscar produtos"
-    }
+    },
+    "title": "Cardápio"
   }
 }
