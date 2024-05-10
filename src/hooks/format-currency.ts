@@ -1,15 +1,20 @@
 import { useFormatter } from 'next-intl'
+import { useCallback } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import { localeState } from '~/context/locale-atom'
 
-type Props = {
-  value: number
-}
-
-export function useFormatCurrency({ value }: Props) {
+export function useFormatCurrency() {
   const locale = useRecoilValue(localeState)
   const format = useFormatter()
 
-  return format.number(value, { style: 'currency', currency: locale?.ccy })
+  const formatCurrency = useCallback(
+    (value: number) => {
+      if (!locale?.ccy) return '...'
+      return format.number(value, { style: 'currency', currency: locale?.ccy })
+    },
+    [format, locale?.ccy],
+  )
+
+  return formatCurrency
 }
