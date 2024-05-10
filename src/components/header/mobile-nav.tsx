@@ -27,7 +27,7 @@ export function MobileNav({ links, backgroundColor = 'black' }: Props) {
           </button>
         </Modal.Button>
         <Modal.Content>
-          <nav className="flex h-full w-full flex-col items-center justify-center">
+          <nav className="flex h-full w-full flex-col items-center justify-center gap-10">
             {links.map((link) => (
               <NavLink key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} isMobile>
                 {link.label}
