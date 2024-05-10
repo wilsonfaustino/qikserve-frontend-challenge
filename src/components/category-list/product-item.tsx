@@ -20,7 +20,6 @@ export function ProductItem({ product }: Props) {
     formattedPrice,
     handleAddToOrder,
     handleModifierChange,
-    localeSettings,
     open,
     price,
     setAmount,
@@ -72,7 +71,6 @@ export function ProductItem({ product }: Props) {
                 <ModifierPicker
                   key={mod.id}
                   modifier={mod}
-                  localeSettings={localeSettings}
                   value={currentModifierValue(mod)}
                   onChange={handleModifierChange}
                 />

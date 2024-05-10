@@ -1,18 +1,27 @@
-import Image from 'next/image'
+'use client'
 
-import type { Settings } from '~/@types'
-import { getSettings } from '~/api/settings'
+import Image from 'next/image'
+import { useEffect } from 'react'
+import { useSetRecoilState } from 'recoil'
+
+import type { Locale, Settings } from '~/@types'
+import { localeState } from '~/context/locale-atom'
 
 import { DisplayNav } from './display-nav'
 
-export type Props = {
+type Props = {
+  locale: Locale
   settings: Settings
 }
 
-export async function Header() {
-  const data = await getSettings()
-  const settings = data.webSettings
-  const url = data.webSettings.bannerImage || 'https://fakeimg.pl/1440x150?text=Placeholder+image'
+export function Header({ locale, settings }: Props) {
+  const setLocale = useSetRecoilState(localeState)
+
+  useEffect(() => {
+    setLocale(locale)
+  }, [locale, setLocale])
+
+  const url = settings.bannerImage || 'https://fakeimg.pl/1440x150?text=Placeholder+image'
 
   return (
     <div

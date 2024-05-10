@@ -2,12 +2,15 @@
 
 import { useTranslations } from 'next-intl'
 
+import { useFormatCurrency } from '~/hooks/format-currency'
+
 import { CountPicker } from '../count-picker'
 import { useCart } from './hooks/cart'
 
 export function CartDesktop() {
   const t = useTranslations('menu.Menu')
-  const { cartItems, cartTotal, formatPrice, handleQuantity, styleSettings, subTotal } = useCart()
+  const { cartItems, cartTotal, handleQuantity, styleSettings, subTotal } = useCart()
+  const formatCurrency = useFormatCurrency()
 
   if (cartItems.length === 0) {
     return (
@@ -32,7 +35,7 @@ export function CartDesktop() {
           <div key={`${item.id}-${Math.random()}`} className="px-4 pb-4 pt-2 text-left">
             <div className="flex items-center justify-between">
               <h3>{item.name}</h3>
-              <p>{formatPrice(item.price * item.quantity)}</p>
+              <p>{formatCurrency(item.price * item.quantity)}</p>
             </div>
             {item.modifiers && (
               <ul>
@@ -54,11 +57,11 @@ export function CartDesktop() {
       </div>
       <div className="flex h-16 items-center justify-between border-b-2 px-6">
         <p>{t('cart.subtotal')}</p>
-        <p>{formatPrice(subTotal)}</p>
+        <p>{formatCurrency(subTotal)}</p>
       </div>
       <div className="flex h-16 items-center justify-between px-6 text-2xl">
         <p>{`${t('cart.total')}:`}</p>
-        <p className="font-bold">{formatPrice(cartTotal)}</p>
+        <p className="font-bold">{formatCurrency(cartTotal)}</p>
       </div>
     </div>
   )

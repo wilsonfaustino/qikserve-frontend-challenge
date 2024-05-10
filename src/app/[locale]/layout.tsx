@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import type { ReactNode } from 'react'
 
+import { getSettings } from '~/api/settings'
 import { Header } from '~/components/header'
 import RecoilContextProvider from '~/context/recoil-provider'
 import { cn } from '~/utils/classnames'
@@ -23,6 +24,7 @@ export default async function RootLayout({
   children: ReactNode
   params: { locale: string }
 }) {
+  const data = await getSettings()
   const messages = await getMessages()
 
   return (
@@ -30,7 +32,15 @@ export default async function RootLayout({
       <body className={cn('bg-app-500 text-app-900 antialiased', roboto.className)}>
         <NextIntlClientProvider messages={messages}>
           <RecoilContextProvider>
-            <Header />
+            <Header
+              locale={{
+                locale: data.locale,
+                timezone: data.timezone,
+                timezoneOffset: data.timezoneOffset,
+                ccy: data.ccy,
+              }}
+              settings={data.webSettings}
+            />
             {children}
           </RecoilContextProvider>
         </NextIntlClientProvider>

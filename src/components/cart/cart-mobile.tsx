@@ -2,13 +2,16 @@
 
 import { useTranslations } from 'next-intl'
 
+import { useFormatCurrency } from '~/hooks/format-currency'
+
 import { CountPicker } from '../count-picker'
 import { Modal } from '../modal'
 import { useCart } from './hooks/cart'
 
 export function CartMobile() {
   const t = useTranslations('menu.Menu')
-  const { cartItems, cartTotal, formatPrice, handleQuantity, handleCheckout, styleSettings, subTotal } = useCart()
+  const { cartItems, cartTotal, handleQuantity, handleCheckout, styleSettings, subTotal } = useCart()
+  const formatCurrency = useFormatCurrency()
 
   const itemsAmountText = cartItems.length === 1 ? 'item' : 'items'
 
@@ -38,7 +41,7 @@ export function CartMobile() {
                   <div key={`${item.id}-${Math.random()}`} className="px-4 pb-4 pt-2 text-left">
                     <div className="flex items-center justify-between">
                       <h3>{item.name}</h3>
-                      <p>{formatPrice(item.price * item.quantity)}</p>
+                      <p>{formatCurrency(item.price * item.quantity)}</p>
                     </div>
                     {item.modifiers && (
                       <ul>
@@ -60,11 +63,11 @@ export function CartMobile() {
               </div>
               <div className="flex h-16 items-center justify-between border-b-2 px-6">
                 <p>{t('cart.subtotal')}</p>
-                <p>{formatPrice(subTotal)}</p>
+                <p>{formatCurrency(subTotal)}</p>
               </div>
               <div className="flex h-16 items-center justify-between px-6 text-2xl">
                 <p>{`${t('cart.total')}:`}</p>
-                <p className="font-bold">{formatPrice(cartTotal)}</p>
+                <p className="font-bold">{formatCurrency(cartTotal)}</p>
               </div>
             </div>
             <div className="flex h-20 w-full px-6 pb-6 pt-2">
