@@ -1,19 +1,22 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { CountPicker } from '../count-picker'
 import { useCart } from './hooks/cart'
 
 export function CartDesktop() {
+  const t = useTranslations('menu.Menu')
   const { cartItems, cartTotal, formatPrice, handleQuantity, styleSettings, subTotal } = useCart()
 
   if (cartItems.length === 0) {
     return (
       <div className="min-h-[129px] w-80 bg-app-400 shadow-lg">
         <div className="flex h-16 items-center px-6">
-          <h2 className="text-2xl font-medium text-app-800">Carrinho</h2>
+          <h2 className="text-2xl font-medium text-app-800">{t('cart.title')}</h2>
         </div>
         <div className="flex h-16 items-center bg-white px-6">
-          <p className="text-app-800">Seu carrinho está vazio</p>
+          <p className="text-app-800">{t('cart.empty')}</p>
         </div>
       </div>
     )
@@ -22,7 +25,7 @@ export function CartDesktop() {
   return (
     <div className="min-h-[129px] w-[320px] overflow-hidden bg-app-400 shadow-lg">
       <div className="flex h-16 items-center px-6">
-        <h2 className="text-2xl font-medium text-app-800">Carrinho</h2>
+        <h2 className="text-2xl font-medium text-app-800">{t('cart.title')}</h2>
       </div>
       <div className="flex w-full flex-col bg-white shadow-sm">
         {cartItems.map((item) => (
@@ -50,11 +53,11 @@ export function CartDesktop() {
         ))}
       </div>
       <div className="flex h-16 items-center justify-between border-b-2 px-6">
-        <p>Subtotal</p>
+        <p>{t('cart.subtotal')}</p>
         <p>{formatPrice(subTotal)}</p>
       </div>
       <div className="flex h-16 items-center justify-between px-6 text-2xl">
-        <p>Total:</p>
+        <p>{`${t('cart.total')}:`}</p>
         <p className="font-bold">{formatPrice(cartTotal)}</p>
       </div>
     </div>
