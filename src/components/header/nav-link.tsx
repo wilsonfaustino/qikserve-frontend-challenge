@@ -24,7 +24,7 @@ export function NavLink({ children, href, className, isMobile, ...props }: Props
     <Link
       className={cn(
         'group relative top-0 flex items-center focus:outline-none',
-        'h-10 w-full justify-end sm:h-[52px] sm:w-[232px] sm:justify-center',
+        'h-10 w-full max-w-[232px] justify-center sm:h-[52px] sm:w-[232px]',
         className,
       )}
       data-active={isActive}
@@ -42,7 +42,7 @@ export function NavLink({ children, href, className, isMobile, ...props }: Props
       {isActive ? (
         <motion.div
           className={cn(
-            'absolute inset-x-0 bottom-0 h-[5px] w-full',
+            'absolute inset-x-0 bottom-0 h-[5px] max-w-56 sm:w-full',
             isMobile ? 'group-data-[active=true]:bg-zinc-500' : 'group-data-[active=true]:bg-white',
           )}
           layoutId="line"

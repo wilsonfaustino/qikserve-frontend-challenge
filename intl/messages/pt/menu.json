@@ -1,0 +1,22 @@
+{
+  "Menu": {
+    "allergy-warning": "Veja informações sobre alergênicos",
+    "cart": {
+      "checkout": "Finalizar compra",
+      "empty": "Seu carrinho está vazio",
+      "subtotal": "Subtotal",
+      "title": "Carrinho",
+      "total": "Total",
+      "your-basket": "Seu carrinho"
+    },
+    "links":{
+      "home": "Cardápio",
+      "signin": "Entrar",
+      "contact": "Contato"
+    },
+    "search": {
+      "placeholder": "Buscar produtos"
+    },
+    "title": "Cardápio"
+  }
+}

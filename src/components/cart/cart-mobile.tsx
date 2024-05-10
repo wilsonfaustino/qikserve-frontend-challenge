@@ -1,10 +1,13 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { CountPicker } from '../count-picker'
 import { Modal } from '../modal'
 import { useCart } from './hooks/cart'
 
 export function CartMobile() {
+  const t = useTranslations('menu.Menu')
   const { cartItems, cartTotal, formatPrice, handleQuantity, handleCheckout, styleSettings, subTotal } = useCart()
 
   const itemsAmountText = cartItems.length === 1 ? 'item' : 'items'
@@ -20,14 +23,14 @@ export function CartMobile() {
             className="h-12 w-full rounded-full text-lg font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
             style={{ backgroundColor: styleSettings?.primaryColour }}
           >
-            {`Your basket • ${cartItems.length} ${itemsAmountText}`}
+            {`${t('cart.your-basket')} • ${cartItems.length} ${itemsAmountText}`}
           </button>
         </Modal.Button>
         <Modal.Content>
           <div className="flex h-full w-full flex-col justify-between">
             <div className="flex w-full flex-col">
               <header className="flex h-16 w-full items-center justify-center">
-                <h2 className="text-2xl font-bold text-app-800">Basket</h2>
+                <h2 className="text-2xl font-bold text-app-800">{t('cart.title')}</h2>
               </header>
 
               <div className="flex w-full flex-col bg-white shadow-sm">
@@ -56,11 +59,11 @@ export function CartMobile() {
                 ))}
               </div>
               <div className="flex h-16 items-center justify-between border-b-2 px-6">
-                <p>Subtotal</p>
+                <p>{t('cart.subtotal')}</p>
                 <p>{formatPrice(subTotal)}</p>
               </div>
               <div className="flex h-16 items-center justify-between px-6 text-2xl">
-                <p>Total:</p>
+                <p>{`${t('cart.total')}:`}</p>
                 <p className="font-bold">{formatPrice(cartTotal)}</p>
               </div>
             </div>
@@ -71,7 +74,7 @@ export function CartMobile() {
                 className="h-12 w-full rounded-full text-lg font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
                 style={{ backgroundColor: styleSettings?.primaryColour }}
               >
-                Checkout
+                {t('cart.checkout')}
               </button>
             </div>
           </div>

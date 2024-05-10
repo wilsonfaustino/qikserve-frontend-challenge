@@ -1,0 +1,22 @@
+{
+  "Menu": {
+    "allergy-warning": "View allergy information",
+    "cart": {
+      "checkout": "Checkout",
+      "empty": "Your basket is empty",
+      "subtotal": "Subtotal",
+      "title": "Basket",
+      "total": "Total",
+      "your-basket": "Your basket"
+    },
+    "links":{
+      "home": "menu",
+      "signin": "Sign in",
+      "contact": "Contact"
+    },
+    "search": {
+      "placeholder": "Search menu items"
+    },
+    "title": "Menu"
+  }
+}

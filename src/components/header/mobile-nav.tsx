@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import menuIcon from '~/assets/menu-icon.svg'
@@ -14,6 +15,7 @@ type Props = {
   links: Link[]
 }
 export function MobileNav({ links, backgroundColor = 'black' }: Props) {
+  const t = useTranslations('menu.Menu')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -25,7 +27,7 @@ export function MobileNav({ links, backgroundColor = 'black' }: Props) {
           </button>
         </Modal.Button>
         <Modal.Content>
-          <nav className="flex h-full w-full flex-col items-center justify-center">
+          <nav className="flex h-full w-full flex-col items-center justify-center gap-10">
             {links.map((link) => (
               <NavLink key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} isMobile>
                 {link.label}
@@ -34,7 +36,7 @@ export function MobileNav({ links, backgroundColor = 'black' }: Props) {
           </nav>
         </Modal.Content>
       </Modal>
-      <h1 className="text-lg font-medium text-white">Menu</h1>
+      <h1 className="text-lg font-medium text-white">{t('title')}</h1>
     </div>
   )
 }

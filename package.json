@@ -13,9 +13,7 @@
     "coverage:preview": "serve coverage -l 3001",
     "generate": "plop",
     "prepare": "is-ci || husky install",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
-    "storybook:preview": "serve storybook-static -l 3001"
+    "generate-message-types": "node ./scripts/generate-message-types.js"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
@@ -28,6 +26,7 @@
     "autoprefixer": "10.4.16",
     "framer-motion": "11.1.7",
     "next": "13.5.4",
+    "next-intl": "^3.13.0",
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",

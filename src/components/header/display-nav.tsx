@@ -1,6 +1,8 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import { useEffect, useMemo } from 'react'
 import { useSetRecoilState } from 'recoil'
 
 import type { Settings } from '~/@types'
@@ -20,7 +22,10 @@ type Props = {
 }
 
 export function DisplayNav({ settings }: Props) {
+  const t = useTranslations('menu.Menu')
   const setSettings = useSetRecoilState(settingsState)
+
+  const { locale } = useParams()
 
   const { isDesktop, isMobile } = useDevice()
 
@@ -30,20 +35,13 @@ export function DisplayNav({ settings }: Props) {
     }
   }, [settings, setSettings])
 
-  const links: Link[] = [
-    {
-      href: '/',
-      label: 'Menu',
-    },
-    {
-      href: '/signin',
-      label: 'ENTRAR',
-    },
-    {
-      href: '/contact',
-      label: 'Contato',
-    },
-  ]
+  const links: Link[] = useMemo(() => {
+    return [
+      { href: `/${locale}`, label: t('links.home') },
+      { href: `/${locale}/signin`, label: t('links.signin') },
+      { href: `/${locale}/contact`, label: t('links.contact') },
+    ]
+  }, [t, locale])
 
   return (
     <section className="mx-auto w-full">
