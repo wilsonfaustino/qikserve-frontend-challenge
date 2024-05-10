@@ -1,10 +1,12 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useRecoilValue } from 'recoil'
 
 import { settingsState } from '~/context/settings-atom'
 
 export function AllergyInformation() {
+  const t = useTranslations('menu.Menu')
   const settings = useRecoilValue(settingsState)
   return (
     <div
@@ -12,7 +14,7 @@ export function AllergyInformation() {
       style={{ color: settings?.primaryColour || 'black' }}
     >
       <a href="" className="h-5 w-full rounded-full bg-white font-bold underline">
-        View Allergy Information
+        {t('allergy-warning')}
       </a>
     </div>
   )
