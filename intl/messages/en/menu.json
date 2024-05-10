@@ -8,6 +8,9 @@
       "title": "Basket",
       "total": "Total",
       "your-basket": "Your basket"
+    },
+    "search": {
+      "placeholder": "Search menu items"
     }
   }
 }

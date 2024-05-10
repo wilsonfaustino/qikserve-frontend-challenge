@@ -8,6 +8,9 @@
       "title": "Carrinho",
       "total": "Total",
       "your-basket": "Seu carrinho"
+    },
+    "search": {
+      "placeholder": "Buscar produtos"
     }
   }
 }
