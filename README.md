@@ -6,6 +6,7 @@ This is a [Next.js](https://nextjs.org/) project for a QikServe Challenge, with 
 
 ## Project Overview
 This project aims to deliver a white-label application example. Users can select products and add to basket, see the basket list and total price. It's built with Next.js and a range of complementary tools to provide a robust and efficient development experience.
+If you want to see a preview of this project running you can follow on this [link](https://qikserve-frontend-challenge-eta.vercel.app/).
 
 ## What is inside?
 
