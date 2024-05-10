@@ -13,9 +13,7 @@
     "coverage:preview": "serve coverage -l 3001",
     "generate": "plop",
     "prepare": "is-ci || husky install",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
-    "storybook:preview": "serve storybook-static -l 3001"
+    "generate-message-types": "node ./scripts/generate-message-types.js"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
