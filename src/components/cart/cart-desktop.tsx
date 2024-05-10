@@ -9,7 +9,7 @@ import { useCart } from './hooks/cart'
 
 export function CartDesktop() {
   const t = useTranslations('menu.Menu')
-  const { cartItems, cartTotal, handleQuantity, styleSettings, subTotal } = useCart()
+  const { cartItems, cartTotal, handleQuantity, handleCheckout, styleSettings, subTotal } = useCart()
   const formatCurrency = useFormatCurrency()
 
   if (cartItems.length === 0) {
@@ -62,6 +62,16 @@ export function CartDesktop() {
       <div className="flex h-16 items-center justify-between px-6 text-2xl">
         <p>{`${t('cart.total')}:`}</p>
         <p className="font-bold">{formatCurrency(cartTotal)}</p>
+      </div>
+      <div className="flex h-20 w-full px-6 pb-6 pt-2">
+        <button
+          onClick={handleCheckout}
+          type="button"
+          className="h-12 w-full rounded-full text-lg font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
+          style={{ backgroundColor: styleSettings?.primaryColour }}
+        >
+          {t('cart.checkout')}
+        </button>
       </div>
     </div>
   )

@@ -14,7 +14,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Signin() {
   return (
     <Main>
-      <h1>Sign In</h1>
+      <div className="flex h-96 w-full flex-col items-center justify-center gap-4">
+        <h1 className="text-3xl font-bold text-app-800">Sign In</h1>
+        <p>Under construction</p>
+      </div>
     </Main>
   )
 }
