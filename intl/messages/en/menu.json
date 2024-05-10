@@ -1,0 +1,11 @@
+{
+  "Menu": {
+    "cart": {
+      "title": "Basket",
+      "empty": "Your basket is empty",
+      "checkout": "Checkout",
+      "subtotal": "Subtotal",
+      "total": "Total"
+    }
+  }
+}
