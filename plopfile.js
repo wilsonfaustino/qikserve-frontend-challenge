@@ -28,11 +28,6 @@ module.exports = async (plop) => {
       },
       {
         type: 'add',
-        path: 'src/components/{{kebabCase name}}/stories.tsx',
-        templateFile: '.plop/templates/stories.tsx.hbs',
-      },
-      {
-        type: 'add',
         path: 'src/components/{{kebabCase name}}/test.tsx',
         templateFile: '.plop/templates/test.tsx.hbs',
       },
