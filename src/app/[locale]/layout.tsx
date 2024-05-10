@@ -2,6 +2,8 @@ import '~/styles/globals.css'
 
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
 import type { ReactNode } from 'react'
 
 import { Header } from '~/components/header'
@@ -14,14 +16,24 @@ export const metadata: Metadata = {
   viewport: 'width=device-width,initial-scale=1',
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+  params: { locale },
+}: {
+  children: ReactNode
+  params: { locale: string }
+}) {
+  const messages = await getMessages()
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={cn('bg-app-500 text-app-900 antialiased', roboto.className)}>
-        <RecoilContextProvider>
-          <Header />
-          {children}
-        </RecoilContextProvider>
+        <NextIntlClientProvider messages={messages}>
+          <RecoilContextProvider>
+            <Header />
+            {children}
+          </RecoilContextProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
