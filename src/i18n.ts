@@ -1,14 +1,19 @@
-import { notFound } from 'next/navigation'
 import { getRequestConfig } from 'next-intl/server'
 
-// Can be imported from a shared config
-const locales = ['en', 'pt']
+// INFO: keep it sorted
+const files = ['menu']
+
+export const supportedLocales = ['en', 'pt']
 
 export default getRequestConfig(async ({ locale }) => {
-  // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale)) notFound()
-
+  const messages = await Promise.all(
+    files.map(async (file) => {
+      const messageFile = await import(`../intl/messages/${locale}/${file}.json`)
+      return { [file]: messageFile.default }
+    }),
+  )
   return {
-    messages: (await import(`../intl/messages/${locale}.json`)).default,
+    timeZone: 'America/Sao_Paulo',
+    messages: Object.assign({}, ...messages),
   }
 })
