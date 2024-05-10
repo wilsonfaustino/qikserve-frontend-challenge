@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useSetRecoilState } from 'recoil'
 
 import { searchTermState } from '~/context/search-atom'
@@ -8,6 +9,7 @@ import { cn } from '~/utils/classnames'
 import { SearchIcon } from '../icons/search-icon'
 
 export function SearchBar() {
+  const t = useTranslations('menu.Menu')
   const setSearchTerm = useSetRecoilState(searchTermState)
 
   return (
@@ -27,7 +29,7 @@ export function SearchBar() {
             'h-11 w-full border-transparent bg-transparent',
             'placeholder:text-app-700 focus:border-transparent focus:outline-0 focus:ring-0',
           )}
-          placeholder="Search menu items"
+          placeholder={t('search.placeholder')}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
