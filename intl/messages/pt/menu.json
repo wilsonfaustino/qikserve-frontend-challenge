@@ -1,5 +1,6 @@
 {
   "Menu": {
+    "allergy-warning": "Veja informações sobre alergênicos",
     "cart": {
       "checkout": "Finalizar compra",
       "empty": "Seu carrinho está vazio",

@@ -1,5 +1,6 @@
 {
   "Menu": {
+    "allergy-warning": "View allergy information",
     "cart": {
       "checkout": "Checkout",
       "empty": "Your basket is empty",
