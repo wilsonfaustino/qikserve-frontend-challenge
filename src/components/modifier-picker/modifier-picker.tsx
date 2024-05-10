@@ -1,17 +1,17 @@
 import * as RadioGroup from '@radix-ui/react-radio-group'
 
-import type { Locale, ModifierProduct } from '~/@types'
+import type { ModifierProduct } from '~/@types'
+import { useFormatCurrency } from '~/hooks/format-currency'
 import { cn } from '~/utils/classnames'
-import { formatCurrency } from '~/utils/formatCurrency'
 
 export type Props = {
   modifier: ModifierProduct
-  localeSettings?: Locale
   value?: string
   onChange: (value: string) => void
 }
 
-export function ModifierPicker({ modifier, localeSettings, value, onChange }: Props) {
+export function ModifierPicker({ modifier, value, onChange }: Props) {
+  const formatCurrency = useFormatCurrency()
   return (
     <div className="flex w-full flex-col">
       <div className="flex h-[68px] flex-col justify-center bg-[#F8F9FA] p-4">
@@ -24,7 +24,7 @@ export function ModifierPicker({ modifier, localeSettings, value, onChange }: Pr
             <div key={item.id} className="flex w-full items-center justify-between p-4">
               <label className="flex flex-col justify-center" htmlFor={`${modifier.id}-${item.id}`}>
                 <span className="font-bold">{item.name}</span>
-                <span>{formatCurrency(item.price, localeSettings?.locale, localeSettings?.ccy)}</span>
+                <span>{formatCurrency(item.price)}</span>
               </label>
               <RadioGroup.Item
                 className="flex h-5 w-5 items-center justify-center rounded-full border-[3px] border-zinc-500 leading-none"

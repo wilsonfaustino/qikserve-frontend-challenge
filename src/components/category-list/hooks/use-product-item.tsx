@@ -3,16 +3,14 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 
 import type { CartProductModifier, ModifierProduct, Product } from '~/@types'
 import { cartState } from '~/context/cart-atom'
-import { localeState } from '~/context/locale-atom'
 import { settingsState } from '~/context/settings-atom'
-import { formatCurrency } from '~/utils/formatCurrency'
+import { useFormatCurrency } from '~/hooks/format-currency'
 
 type Props = {
   product: Product
 }
 
 export function useProductItem({ product }: Props) {
-  const localeSettings = useRecoilValue(localeState)
   const styleSettings = useRecoilValue(settingsState)
   const [cart, setCart] = useRecoilState(cartState)
 
@@ -21,7 +19,9 @@ export function useProductItem({ product }: Props) {
   const [price, setPrice] = useState(product.price)
   const [modifiers, setModifiers] = useState<CartProductModifier[]>([])
 
-  const formattedPrice = formatCurrency(price * amount, localeSettings?.locale, localeSettings?.ccy)
+  const formatCurrency = useFormatCurrency()
+
+  const formattedPrice = formatCurrency(price * amount)
 
   const currentModifierValue = (modifier: ModifierProduct) => {
     const foundModifier = modifiers.find((mod) => mod.parentId === modifier.id)
@@ -67,7 +67,6 @@ export function useProductItem({ product }: Props) {
     formattedPrice,
     handleAddToOrder,
     handleModifierChange,
-    localeSettings,
     open,
     price,
     setAmount,
